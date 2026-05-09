@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Assistant — Projects</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">AI Assistant</a>
+      <nav class="main-nav" aria-label="Päävalikko">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <h1>Example projects</h1>
+    <div class="cards">
+      <article class="card">
+        <h3>Chat Mockup</h3>
+        <p>Static UI demonstrating chat, settings and responsiveness.</p>
+      </article>
+      <article class="card">
+        <h3>PDF Import</h3>
+        <p>Planned feature: upload PDF and extract context for the assistant.</p>
+      </article>
+      <article class="card">
+        <h3>Token Logger</h3>
+        <p>Planned feature: usage and cost overview dashboard.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">© 2026 Joona</div></footer>
+  <script>document.querySelector('.menu-toggle').addEventListener('click', ()=>document.querySelector('.main-nav').classList.toggle('open'))</script>
+</body>
+</html>

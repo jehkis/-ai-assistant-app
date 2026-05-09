@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Assistant — Contact</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">AI Assistant</a>
+      <nav class="main-nav" aria-label="Päävalikko">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <h1>Contact</h1>
+    <form class="contact-form" action="#" onsubmit="event.preventDefault(); alert('Mock send');">
+      <label>Name <input type="text" required></label>
+      <label>Email <input type="email" required></label>
+      <label>Message <textarea rows="4" required></textarea></label>
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+  </main>
+
+  <footer class="site-footer"><div class="container">© 2026 Joona</div></footer>
+  <script>document.querySelector('.menu-toggle').addEventListener('click', ()=>document.querySelector('.main-nav').classList.toggle('open'))</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Assistant — About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">AI Assistant</a>
+      <nav class="main-nav" aria-label="Päävalikko">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <article>
+      <h1>About this prototype</h1>
+      <p>This multi-page HTML/CSS prototype demonstrates a responsive UI for an AI assistant web app.</p>
+      <h2>Purpose</h2>
+      <ul>
+        <li>Demonstrate layout and usability for desktop and mobile</li>
+        <li>Provide a visual scaffold before backend integration</li>
+        <li>Serve as submission-ready portfolio/web assignment</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="container">© 2026 Joona</div></footer>
+  <script>document.querySelector('.menu-toggle').addEventListener('click', ()=>document.querySelector('.main-nav').classList.toggle('open'))</script>
+</body>
+</html>
