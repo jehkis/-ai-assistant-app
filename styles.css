@@ -1,0 +1,3 @@
+:root{--bg:#0f172a;--text:#e6eef8}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,system-ui;background:var(--bg);color:var(--text);padding:2rem}
+header h1{margin:0 0 1rem;font-size:1.6rem}
