@@ -24,8 +24,10 @@
   <main class="container grid-root">
     <aside class="sidebar">
       <h3>Asetukset</h3>
-      <label for="temp">Temperature</label>
-      <output id="tempOut" for="temp">0.7</output>
+      <div class="control-head">
+        <label for="temp">Temperature</label>
+        <output id="tempOut" for="temp">0.7</output>
+      </div>
       <input id="temp" type="range" min="0" max="1" step="0.01" value="0.7" oninput="tempOut.value = this.value">
       <label>Model
         <select>
