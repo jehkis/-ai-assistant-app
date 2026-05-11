@@ -393,6 +393,17 @@ textarea {
   box-shadow: 0 0 0 3px rgba(50, 214, 181, 0.16);
 }
 
+.contact-form .btn.primary {
+  justify-self: start;
+  padding: 0.72rem 1.05rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(50, 214, 181, 0.18);
+}
+
+.contact-form .btn.primary:hover {
+  box-shadow: 0 14px 32px rgba(50, 214, 181, 0.24);
+}
+
 .site-footer {
   margin-top: 1rem;
   padding: 1rem 0;
