@@ -21,10 +21,59 @@ body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--text);
   min-height: 100vh;
+  overflow-x: hidden;
   background:
     radial-gradient(900px 420px at 12% 0%, rgba(50, 214, 181, 0.18), transparent 55%),
     radial-gradient(700px 360px at 95% 10%, rgba(137, 244, 223, 0.12), transparent 65%),
     linear-gradient(170deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 999px;
+  filter: blur(12px);
+  opacity: 0.75;
+  animation: floatGlow 18s ease-in-out infinite;
+}
+
+body::before {
+  width: 18rem;
+  height: 18rem;
+  left: -4rem;
+  top: 8rem;
+  background: radial-gradient(circle, rgba(50, 214, 181, 0.25), transparent 68%);
+}
+
+body::after {
+  width: 22rem;
+  height: 22rem;
+  right: -6rem;
+  top: 18rem;
+  background: radial-gradient(circle, rgba(137, 244, 223, 0.18), transparent 68%);
+  animation-delay: -9s;
+}
+
+main,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes floatGlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.05);
+  }
 }
 
 .container {
@@ -42,6 +91,14 @@ body {
   background: linear-gradient(180deg, rgba(5, 10, 18, 0.86), rgba(5, 10, 18, 0.62));
 }
 
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(50, 214, 181, 0.65), transparent);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -55,6 +112,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--accent-soft);
+  text-shadow: 0 0 18px rgba(137, 244, 223, 0.12);
 }
 
 .menu-toggle {
@@ -93,6 +151,7 @@ body {
   color: var(--text);
   background: rgba(50, 214, 181, 0.14);
   border-color: rgba(50, 214, 181, 0.28);
+  box-shadow: 0 0 0 1px rgba(50, 214, 181, 0.08), 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .grid-root {
@@ -104,9 +163,36 @@ body {
 .chat-area,
 .card {
   border: 1px solid var(--panel-border);
-  background: var(--panel);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.26);
+  background:
+    linear-gradient(180deg, rgba(18, 31, 49, 0.82), rgba(9, 18, 32, 0.72)),
+    var(--panel);
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.3);
   border-radius: 16px;
+}
+
+.sidebar::before,
+.chat-area::before,
+.card::before,
+.page-content > article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(137, 244, 223, 0.32), rgba(255, 255, 255, 0.04), rgba(50, 214, 181, 0.2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.sidebar,
+.chat-area,
+.card,
+.page-content > article {
+  position: relative;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -279,6 +365,17 @@ textarea {
   padding: 0.9rem;
 }
 
+.chat-area::after {
+  content: "";
+  position: absolute;
+  inset: auto -2rem -2rem auto;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(50, 214, 181, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
 .chat-header {
   display: flex;
   flex-direction: column;
@@ -318,12 +415,14 @@ textarea {
   align-self: flex-end;
   border: 1px solid rgba(50, 214, 181, 0.3);
   background: linear-gradient(90deg, rgba(50, 214, 181, 0.22), rgba(50, 214, 181, 0.08));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
 }
 
 .msg.bot {
   align-self: flex-start;
   border: 1px solid rgba(167, 188, 208, 0.2);
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .chat-input {
@@ -422,6 +521,12 @@ textarea {
   box-shadow: 0 18px 52px rgba(0, 0, 0, 0.3);
 }
 
+.cards .card h3 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+  color: var(--accent-soft);
+}
+
 .cards .card p {
   color: var(--muted);
   line-height: 1.65;
@@ -473,6 +578,17 @@ textarea {
   border-top: 1px solid rgba(167, 188, 208, 0.14);
   color: var(--muted);
   font-size: 0.92rem;
+  background: linear-gradient(180deg, transparent, rgba(5, 10, 18, 0.25));
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(50, 214, 181, 0.45), transparent);
 }
 
 @media (min-width: 640px) and (max-width: 899px) {
