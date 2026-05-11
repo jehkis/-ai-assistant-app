@@ -375,6 +375,22 @@ textarea {
   width: 100%;
   margin-top: 0.35rem;
   padding: 0.55rem;
+  border: 1px solid rgba(167, 188, 208, 0.28);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--text);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(169, 186, 205, 0.72);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(50, 214, 181, 0.62);
+  box-shadow: 0 0 0 3px rgba(50, 214, 181, 0.16);
 }
 
 .site-footer {
