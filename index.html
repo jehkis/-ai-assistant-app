@@ -9,7 +9,7 @@
   <meta name="color-scheme" content="dark">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js?v=20260511" defer></script>
+  <script src="app.js?v=20260511-4" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -47,31 +47,20 @@
     </section>
 
     <aside class="sidebar">
-      <h3>Asetukset</h3>
-      <div class="control-head">
-        <label for="temp">Temperature</label>
-        <output id="tempOut" for="temp">0.7</output>
-      </div>
-      <input id="temp" type="range" min="0" max="1" step="0.01" value="0.7">
-      <label>Model
-        <select>
-          <option>mock-model-v1</option>
-          <option>mock-model-v2</option>
-        </select>
-      </label>
-      <button class="btn ghost" type="button">Reset Chat</button>
+      <h3>Local Demo</h3>
+      <p class="muted">Gemini on poistettu. Chat täyttyy nyt paikallisilla vastauksilla järjestyksessä.</p>
+      <button class="btn ghost" type="button" data-reset-chat>Reset Chat</button>
     </aside>
 
     <section class="chat-area">
       <div class="chat-header">
         <h2>Assistant</h2>
-        <p class="muted">Mock chat UI — käytä tätä esitykseen</p>
+        <p class="muted">Tyhjä aloitus, paikallinen sekvenssidemo</p>
       </div>
 
-      <ul class="chat-history" aria-live="polite">
-        <li class="msg user"><strong>You:</strong> Hei, mitä voit tehdä?</li>
-        <li class="msg bot"><strong>Assistant:</strong> Voin auttaa koodissa, suunnittelussa ja muussa.</li>
-      </ul>
+      <p class="chat-status" role="status" aria-live="polite">Valmis aloittamaan.</p>
+
+      <ul class="chat-history" aria-live="polite"></ul>
 
       <form class="chat-input">
         <textarea id="prompt" placeholder="Kirjoita viesti..." rows="2"></textarea>

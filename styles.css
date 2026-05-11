@@ -102,6 +102,12 @@ main > *:nth-child(3) {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .container {
   width: 94%;
   max-width: 1120px;
@@ -417,6 +423,12 @@ textarea {
   background: linear-gradient(96deg, var(--accent), var(--accent-soft));
 }
 
+.btn.primary:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .btn.ghost:hover,
 .btn.primary:hover {
   transform: translateY(-1px);
@@ -450,6 +462,21 @@ textarea {
 .chat-header h2 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
+}
+
+.chat-status {
+  margin: 0 0 0.65rem;
+  min-height: 1.15rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chat-status.is-loading {
+  color: var(--accent-soft);
+}
+
+.chat-status.is-error {
+  color: #ffb7b7;
 }
 
 .muted {
@@ -487,6 +514,23 @@ textarea {
   border: 1px solid rgba(167, 188, 208, 0.2);
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.msg.is-loading {
+  opacity: 0.85;
+}
+
+.msg.is-loading::after {
+  content: "";
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-left: 0.45rem;
+  border-radius: 50%;
+  border: 2px solid rgba(137, 244, 223, 0.5);
+  border-top-color: transparent;
+  vertical-align: middle;
+  animation: spin 0.9s linear infinite;
 }
 
 .chat-input {
@@ -660,12 +704,12 @@ textarea {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(137, 244, 223, 0.035) 18%,
-    rgba(11, 21, 36, 0.86) 50%,
-    rgba(137, 244, 223, 0.035) 82%,
+    rgba(137, 244, 223, 0.028) 18%,
+    rgba(11, 21, 36, 0.82) 50%,
+    rgba(137, 244, 223, 0.028) 82%,
     transparent 100%
   );
-  opacity: 0.72;
+  opacity: 0.62;
 }
 
 .cards .card:hover {

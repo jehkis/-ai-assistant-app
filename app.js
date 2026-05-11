@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".main-nav");
+  const chatStatus = document.querySelector(".chat-status");
+  const demoReplies = [
+    "1. Lisätään ensimmäinen kenttä.",
+    "2. Täytetään seuraava arvo.",
+    "3. Tarkistetaan lopputulos.",
+    "4. Valmis, kaikki on järjestyksessä.",
+  ];
+  let demoIndex = 0;
 
   if (navToggle && nav) {
     navToggle.addEventListener("click", () => {
@@ -9,24 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const temp = document.getElementById("temp");
-  const tempOut = document.getElementById("tempOut");
-
-  if (temp && tempOut) {
-    const syncTemperature = () => {
-      tempOut.value = temp.value;
-    };
-
-    temp.addEventListener("input", syncTemperature);
-    syncTemperature();
-  }
-
   const chatForm = document.querySelector(".chat-input");
   const chatList = document.querySelector(".chat-history");
   const prompt = document.getElementById("prompt");
+  const sendButton = chatForm?.querySelector('button[type="submit"]') || null;
+  const resetButton = document.querySelector("[data-reset-chat]");
 
   if (chatForm && chatList && prompt) {
-    chatForm.addEventListener("submit", (event) => {
+    chatForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const value = prompt.value.trim();
@@ -36,10 +34,40 @@ document.addEventListener("DOMContentLoaded", () => {
       prompt.value = "";
       chatList.scrollTop = chatList.scrollHeight;
 
-      window.setTimeout(() => {
-        chatList.appendChild(createMessage("Assistant", "Tämä on mock-vastaus.", "bot"));
+      const loadingMessage = createMessage("Assistant", "Täytetään seuraava kohta...", "bot is-loading");
+      chatList.appendChild(loadingMessage);
+      setChatStatus("Täytetään kohtia järjestyksessä...", "loading");
+
+      if (sendButton) {
+        sendButton.disabled = true;
+        sendButton.textContent = "Täytetään...";
+      }
+
+      try {
+        const reply = await getDemoReply(value);
+        loadingMessage.replaceWith(createMessage("Assistant", reply, "bot"));
+        setChatStatus("Kohta täytetty.", "idle");
+      } catch (error) {
+        console.error(error);
+        loadingMessage.replaceWith(
+          createMessage("Assistant", "Tässä demossa täyttö epäonnistui, yritä uudelleen.", "bot")
+        );
+        setChatStatus("Demo ei saanut seuraavaa kohtaa valmiiksi.", "error");
+      } finally {
         chatList.scrollTop = chatList.scrollHeight;
-      }, 700);
+        if (sendButton) {
+          sendButton.disabled = false;
+          sendButton.textContent = "Send";
+        }
+      }
+    });
+  }
+
+  if (resetButton && chatList) {
+    resetButton.addEventListener("click", () => {
+      demoIndex = 0;
+      chatList.replaceChildren();
+      setChatStatus("Valmis aloittamaan.", "idle");
     });
   }
 
@@ -51,6 +79,20 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       status.textContent = "Viestiä ei lähetetä tässä prototyypissä. Lomake toimii vain käyttöliittymänä.";
     });
+  }
+
+  async function getDemoReply(message) {
+    await new Promise((resolve) => window.setTimeout(resolve, 450));
+    const reply = demoReplies[demoIndex] || `Seuraava täytettävä kohta on: ${message}`;
+    demoIndex += 1;
+    return reply;
+  }
+
+  function setChatStatus(text, state) {
+    if (!chatStatus) return;
+    chatStatus.textContent = text;
+    chatStatus.classList.toggle("is-loading", state === "loading");
+    chatStatus.classList.toggle("is-error", state === "error");
   }
 
   function createMessage(author, text, className) {
