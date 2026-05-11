@@ -854,3 +854,10 @@ textarea {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
+
+/* About page footer divider */
+.about-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
