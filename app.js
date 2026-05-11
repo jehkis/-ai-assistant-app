@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Sivuston tavoitteena on näyttää hyvää käytettävyyttä ja visuaalista ilmettä ennen varsinaisen tekoäly-taustapalvelun rakentamista.",
     "Sivulla on About-sivu jossa kerrotaan lisää, Projects-sivu esimerkkiprojekteista, ja Contact-sivu yhteydenottoa varten.",
     "Vieraile About-sivulla saadaksesi lisää tietoa tämän prototypin tarkoituksesta ja rakenteesta!",
+    "Tekoäly-taustapalvelu tulee myöhemmin — nyt tämä on prototyyppi, joka näyttää käyttöliittymän ja käyttäjäkokemuksen ilman AI-integraatiota.",
   ];
   let demoIndex = 0;
 
