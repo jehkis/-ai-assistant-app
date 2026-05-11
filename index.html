@@ -4,8 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Assistant — Home</title>
-  <link rel="stylesheet" href="styles.css">
   <meta name="description" content="AI Assistant prototype — mock UI for chat, settings and content pages">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js?v=20260511" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -48,14 +52,14 @@
         <label for="temp">Temperature</label>
         <output id="tempOut" for="temp">0.7</output>
       </div>
-      <input id="temp" type="range" min="0" max="1" step="0.01" value="0.7" oninput="tempOut.value = this.value">
+      <input id="temp" type="range" min="0" max="1" step="0.01" value="0.7">
       <label>Model
         <select>
           <option>mock-model-v1</option>
           <option>mock-model-v2</option>
         </select>
       </label>
-      <button class="btn ghost">Reset Chat</button>
+      <button class="btn ghost" type="button">Reset Chat</button>
     </aside>
 
     <section class="chat-area">
@@ -69,7 +73,7 @@
         <li class="msg bot"><strong>Assistant:</strong> Voin auttaa koodissa, suunnittelussa ja muussa.</li>
       </ul>
 
-      <form class="chat-input" onsubmit="event.preventDefault(); addMessage();">
+      <form class="chat-input">
         <textarea id="prompt" placeholder="Kirjoita viesti..." rows="2"></textarea>
         <div class="input-actions">
           <button type="submit" class="btn primary">Send</button>
@@ -81,20 +85,5 @@
   <footer class="site-footer">
     <div class="container">© 2026 Joona — AI Assistant prototype</div>
   </footer>
-
-  <script>
-    function addMessage(){
-      const t = document.getElementById('prompt');
-      if(!t.value.trim()) return;
-      const ul = document.querySelector('.chat-history');
-      const li = document.createElement('li'); li.className='msg user'; li.innerHTML = '<strong>You:</strong> '+escapeHtml(t.value);
-      ul.appendChild(li); t.value=''; ul.scrollTop = ul.scrollHeight;
-      // mock assistant reply
-      setTimeout(()=>{ const r = document.createElement('li'); r.className='msg bot'; r.innerHTML = '<strong>Assistant:</strong> Tämä on mock-vastaus.'; ul.appendChild(r); ul.scrollTop = ul.scrollHeight },700);
-    }
-    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-    // simple mobile menu
-    const btn = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); btn.addEventListener('click', ()=>{ const open = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', open); });
-  </script>
 </body>
 </html>
