@@ -568,6 +568,35 @@ textarea {
   margin-top: 1rem;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+}
+
+.hero-btn {
+  min-width: 9.5rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-btn.btn {
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+}
+
+.hero-btn:not(.primary) {
+  border-color: rgba(137, 244, 223, 0.28);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.hero-btn:not(.primary):hover {
+  border-color: rgba(137, 244, 223, 0.4);
+  background: rgba(50, 214, 181, 0.1);
+}
+
 .hero-pill {
   display: inline-flex;
   align-items: center;
@@ -742,9 +771,21 @@ textarea {
     align-items: center;
   }
 
+  .hero-copy {
+    padding-right: 0.5rem;
+  }
+
   .hero-points {
     justify-content: flex-end;
     align-self: center;
+  }
+
+  .hero-actions {
+    margin-top: 1.25rem;
+  }
+
+  .hero-btn {
+    min-width: 11rem;
   }
 
   .chat-area {
