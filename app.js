@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".main-nav");
   const chatStatus = document.querySelector(".chat-status");
   const demoReplies = [
-    "1. Lisätään ensimmäinen kenttä.",
-    "2. Täytetään seuraava arvo.",
-    "3. Tarkistetaan lopputulos.",
-    "4. Valmis, kaikki on järjestyksessä.",
+    "Hei! Tämä on AI Assistant -prototyyppi, joka osoittaa modernin dark UI:n ja responsive designin.",
+    "Sivuston tavoitteena on näyttää hyvää käytettävyyttä ja visuaalista ilmettä ennen varsinaisen tekoäly-taustapalvelun rakentamista.",
+    "Sivulla on About-sivu jossa kerrotaan lisää, Projects-sivu esimerkkiprojekteista, ja Contact-sivu yhteydenottoa varten.",
+    "Vieraile About-sivulla saadaksesi lisää tietoa tämän prototypin tarkoituksesta ja rakenteesta!",
   ];
   let demoIndex = 0;
 
