@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const value = prompt.value.trim();
       if (!value) return;
 
-      chatList.appendChild(createMessage("You", value, "user"));
+      chatList.appendChild(createMessage("Sinä", value, "user"));
       prompt.value = "";
       chatList.scrollTop = chatList.scrollHeight;
 
-      const loadingMessage = createMessage("Assistant", "Täytetään seuraava kohta...", "bot is-loading");
+      const loadingMessage = createMessage("Avustaja", "Täytetään seuraava kohta...", "bot is-loading");
       chatList.appendChild(loadingMessage);
       setChatStatus("Täytetään kohtia järjestyksessä...", "loading");
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const reply = await getDemoReply(value);
-        loadingMessage.replaceWith(createMessage("Assistant", reply, "bot"));
+        loadingMessage.replaceWith(createMessage("Avustaja", reply, "bot"));
         setChatStatus("Kohta täytetty.", "idle");
       } catch (error) {
         console.error(error);
